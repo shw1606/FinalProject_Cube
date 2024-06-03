@@ -145,7 +145,7 @@ int main()
        
        glActiveTexture(GL_TEXTURE0);
        glBindTexture(GL_TEXTURE_2D, cubeTexture);
-      glBindBuffer(GL_ARRAY_BUFFER, VBO);
+       glBindVertexArray(VAO);
       glBufferData(GL_ARRAY_BUFFER, sizeof(magicCube.vertices), magicCube.vertices, GL_DYNAMIC_DRAW);
       for (int x = 0; x < 3; x++)
          for (int y = 0; y < 3; y++)
