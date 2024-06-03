@@ -48,6 +48,90 @@
 			<key>uniqueIdentifier</key>
 			<string>00428576-149E-42C8-BA31-95930475CBF7</string>
 		</dict>
+		<key>3217810F-DDCB-4299-A256-2492EDA6C0BE</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>3217810F-DDCB-4299-A256-2492EDA6C0BE.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>31</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>FinalProject_Cube project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>FinalProject_Cube</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build FinalProject_Cube</string>
+			<key>timeStartedRecording</key>
+			<real>739124958.04375303</real>
+			<key>timeStoppedRecording</key>
+			<real>739124958.98300803</real>
+			<key>title</key>
+			<string>Build FinalProject_Cube</string>
+			<key>uniqueIdentifier</key>
+			<string>3217810F-DDCB-4299-A256-2492EDA6C0BE</string>
+		</dict>
+		<key>376F0532-6E16-46D4-B5F6-FE8170E848DC</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>376F0532-6E16-46D4-B5F6-FE8170E848DC.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>31</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>FinalProject_Cube project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>FinalProject_Cube</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build FinalProject_Cube</string>
+			<key>timeStartedRecording</key>
+			<real>739124711.14733899</real>
+			<key>timeStoppedRecording</key>
+			<real>739124712.08581305</real>
+			<key>title</key>
+			<string>Build FinalProject_Cube</string>
+			<key>uniqueIdentifier</key>
+			<string>376F0532-6E16-46D4-B5F6-FE8170E848DC</string>
+		</dict>
 		<key>567B77AA-5B33-4F13-945D-C8D7532F65A2</key>
 		<dict>
 			<key>className</key>
@@ -215,6 +299,48 @@
 			<string>Build FinalProject_Cube</string>
 			<key>uniqueIdentifier</key>
 			<string>92A3AD69-C784-4723-B455-98F56F046642</string>
+		</dict>
+		<key>BE045665-2FA5-492D-BF40-222174A37A6A</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>BE045665-2FA5-492D-BF40-222174A37A6A.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>31</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>FinalProject_Cube project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>FinalProject_Cube</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build FinalProject_Cube</string>
+			<key>timeStartedRecording</key>
+			<real>739124986.45356798</real>
+			<key>timeStoppedRecording</key>
+			<real>739124987.371943</real>
+			<key>title</key>
+			<string>Build FinalProject_Cube</string>
+			<key>uniqueIdentifier</key>
+			<string>BE045665-2FA5-492D-BF40-222174A37A6A</string>
 		</dict>
 		<key>D32D4783-284A-4FEA-B7A9-2D6840EC8A9E</key>
 		<dict>
