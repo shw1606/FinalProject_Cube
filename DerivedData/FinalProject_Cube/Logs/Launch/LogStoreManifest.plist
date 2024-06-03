@@ -311,6 +311,67 @@
 			<key>uniqueIdentifier</key>
 			<string>40C7744B-6B19-4114-BBEC-29792906DDA4</string>
 		</dict>
+		<key>4C6EE8CE-CA1A-4E8E-A43C-1065A65940C1</key>
+		<dict>
+			<key>auxiliaryLogUniqueIdentifier</key>
+			<string>1CBA0913-2A1D-448C-B23E-C8E4078B2D52</string>
+			<key>auxiliaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>1</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>31</integer>
+			</dict>
+			<key>className</key>
+			<string>IDESchemeActionsInvocationRecord</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>com.apple.dt.IDE.LaunchSchemeAction</string>
+			<key>fileName</key>
+			<string>Run-FinalProject_Cube-2024.06.04_01-59-21-+0900.xcresult</string>
+			<key>hasAuxiliaryLog</key>
+			<true/>
+			<key>hasConsoleLog</key>
+			<true/>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>1</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>31</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>FinalProject_Cube project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>FinalProject_Cube</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Run FinalProject_Cube</string>
+			<key>timeStartedRecording</key>
+			<real>739126761.51989102</real>
+			<key>timeStoppedRecording</key>
+			<real>0.0</real>
+			<key>title</key>
+			<string>Run FinalProject_Cube</string>
+			<key>uniqueIdentifier</key>
+			<string>4C6EE8CE-CA1A-4E8E-A43C-1065A65940C1</string>
+		</dict>
 		<key>62FE09E9-5DAE-40B0-80FE-34C4A73B27AB</key>
 		<dict>
 			<key>auxiliaryLogUniqueIdentifier</key>

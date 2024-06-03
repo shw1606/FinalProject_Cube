@@ -48,6 +48,90 @@
 			<key>uniqueIdentifier</key>
 			<string>00428576-149E-42C8-BA31-95930475CBF7</string>
 		</dict>
+		<key>1CBA0913-2A1D-448C-B23E-C8E4078B2D52</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>1CBA0913-2A1D-448C-B23E-C8E4078B2D52.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>1</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>31</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>FinalProject_Cube project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>FinalProject_Cube</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build FinalProject_Cube</string>
+			<key>timeStartedRecording</key>
+			<real>739126761.52016795</real>
+			<key>timeStoppedRecording</key>
+			<real>739126761.58760095</real>
+			<key>title</key>
+			<string>Build FinalProject_Cube</string>
+			<key>uniqueIdentifier</key>
+			<string>1CBA0913-2A1D-448C-B23E-C8E4078B2D52</string>
+		</dict>
+		<key>2819285D-9E78-44F5-8B26-CA7D562087E5</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>2819285D-9E78-44F5-8B26-CA7D562087E5.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>31</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>FinalProject_Cube project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>FinalProject_Cube</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build FinalProject_Cube</string>
+			<key>timeStartedRecording</key>
+			<real>739126766.66149294</real>
+			<key>timeStoppedRecording</key>
+			<real>739126766.82663703</real>
+			<key>title</key>
+			<string>Build FinalProject_Cube</string>
+			<key>uniqueIdentifier</key>
+			<string>2819285D-9E78-44F5-8B26-CA7D562087E5</string>
+		</dict>
 		<key>3217810F-DDCB-4299-A256-2492EDA6C0BE</key>
 		<dict>
 			<key>className</key>
