@@ -193,12 +193,11 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos)
       float sensitivity = 0.5;
       xoffset *= sensitivity;
       yoffset *= sensitivity;
-      if (abs(xoffset) > 200)xoffset = 200 * xoffset / abs(xoffset);
-      if (abs(yoffset) > 200)yoffset = 200 * yoffset / abs(yoffset);
+      if (abs(xoffset) > 1000)xoffset = 1000 * xoffset / abs(xoffset);
+      if (abs(yoffset) > 1000)yoffset = 1000 * yoffset / abs(yoffset);
       model = glm::rotate(glm::mat4(1.0f), glm::radians(xoffset), glm::vec3(0.0f, 1.0f, 0.0f));
       model = glm::rotate(model, glm::radians(yoffset), glm::vec3(-1.0f, 0.0f, 0.0f));
    }
-   std::cout << xpos << "-" << ypos << std::endl;
 }
 
 void mouse_button_callback(GLFWwindow* window, int key, int action, int mod)
@@ -247,7 +246,7 @@ void mouse_button_callback(GLFWwindow* window, int key, int action, int mod)
    }
    if (key == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_RELEASE)
    {
-//      model = glm::mat4(1.0f);
+      model = glm::mat4(1.0f);
       mouse_right_down = false;
    }
 
