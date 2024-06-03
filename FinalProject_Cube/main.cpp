@@ -24,7 +24,7 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 void mouse_button_callback(GLFWwindow* window, int button, int action, int mods);
 void cursor_position_callback(GLFWwindow* window, double x, double y);
-void loadTexture(const char);
+unsigned int loadTexture(const char *);
 
 Camera camera(glm::vec3(0, 0, 12), glm::vec3(0, 0, -1), glm::vec3(0, 1, 0), 0, 0);
 glm::mat4 model = glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0));
@@ -39,50 +39,21 @@ GLFWwindow* mainWindow = NULL;
 unsigned int SCR_WIDTH = 1920, SCR_HEIGHT = 1080;
 
 // for texture
-static unsigned int texture1; // Array of texture ids.
+static unsigned int cubeTexture; // Array of texture ids.
 static unsigned int texture2;
 
 int main()
 {
-   //glfwInit();
-   //glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-   //glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-   //glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-   //glfwWindowHint(GLFW_DECORATED, GL_FALSE);
-   //GLFWwindow* window = glfwCreateWindow(1920, 1080, "Linger", NULL, NULL);
-   //glfwMakeContextCurrent(window);
-   //if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-   //{
-   //   std::cout << "Failed to initialize GLAD" << std::endl;
-   //   return -1;
-   //}
    mainWindow = glAllInit();
+    
    //====data init====//
    MagicCube magicCube;
    //====data init====//
-   //==============set callback====================//
-   glfwSetInputMode(mainWindow, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
-   glfwSetCursorPosCallback(mainWindow, mouse_callback);
-   glfwSetMouseButtonCallback(mainWindow, mouse_button_callback);
-   //==============set callback====================//
+    
    //====bind texture====//
-   unsigned int texture;
-   glGenTextures(1, &texture);
-   glActiveTexture(GL_TEXTURE0);
-   glBindTexture(GL_TEXTURE_2D, texture);
-   int width, height, nrChannels;
-   unsigned char* data = stbi_load("img_out-1.jpg", &width, &height, &nrChannels, 0);
-   if (data)
-   {
-      glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
-      glGenerateMipmap(GL_TEXTURE_2D);
-   }
-   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-   stbi_image_free(data);
+    cubeTexture = loadTexture("img_out-1.jpg");
    //====bind texture====//
+    
    //==============bind VAO========================//
    GLuint VAO, VBO;
    glGenVertexArrays(1, &VAO);
@@ -95,13 +66,9 @@ int main()
    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(sizeof(float) * 3));
    glEnableVertexAttribArray(2);
    //==============bind VAO========================//
-   glViewport(0, 0, 1920, 1080);
-   glEnable(GL_DEPTH_TEST);
-   //Shader my_shader("shader.vs", "shader.fs");
+    
    myShader = new Shader("shader.vs", "shader.fs");
-   //my_shader.use();
    myShader->use();
-   //glUniform1i(glGetUniformLocation(my_shader.ID, "texture1"), 0);
    myShader->setInt("texture1", 0);
    glBindVertexArray(VAO);
 
@@ -111,13 +78,8 @@ int main()
    glm::mat4 view = glm::lookAt(camera.camPos, camera.camPos + camera.camDir, camera.camUp);
    srand(glfwGetTime());
    float deltaTime = 0;
-   int count = 0;
    float coe = 1;
 
-   //glUniformMatrix4fv(glGetUniformLocation(my_shader.ID, "model"), 1, GL_FALSE, glm::value_ptr(model));
-   //glUniformMatrix4fv(glGetUniformLocation(my_shader.ID, "view"), 1, GL_FALSE, glm::value_ptr(view));
-   //glUniformMatrix4fv(glGetUniformLocation(my_shader.ID, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
-   //glUniform1f(glGetUniformLocation(my_shader.ID, "coe"), coe);
    myShader->setMat4("model", model);
    myShader->setMat4("view", view);
    myShader->setMat4("projection", projection);
@@ -130,8 +92,6 @@ int main()
       float timeValue = glfwGetTime();
       glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
       glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-      glm::mat4 temp = glm::rotate(glm::mat4(1.0f), glm::radians(sin(timeValue) * 180.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-      glm::mat4 tem2 = glm::rotate(glm::mat4(1.0f), glm::radians(sin(-timeValue) * 180.0f), glm::vec3(0.3f, 1.0f, -0.1f));
       if (!replay && !disturb)
          magicCube.rotate(my_ins);
       else if (disturb)
@@ -182,7 +142,9 @@ int main()
          else
             replay = false;
       }
-
+       
+       glActiveTexture(GL_TEXTURE0);
+       glBindTexture(GL_TEXTURE_2D, cubeTexture);
       glBindBuffer(GL_ARRAY_BUFFER, VBO);
       glBufferData(GL_ARRAY_BUFFER, sizeof(magicCube.vertices), magicCube.vertices, GL_DYNAMIC_DRAW);
       for (int x = 0; x < 3; x++)
@@ -215,7 +177,6 @@ int main()
 
 void mouse_callback(GLFWwindow* window, double xpos, double ypos)
 {
-   int text = glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT);
    if (firstMouse)
    {
       lastX = xpos;
@@ -316,8 +277,12 @@ void processInput(GLFWwindow* window)
 
 GLFWwindow* glAllInit()
 {
-   // Initialize GLFW
-   glfwInit();
+    // glfw: initialize and configure
+    if (!glfwInit()) {
+        printf("GLFW initialisation failed!");
+        glfwTerminate();
+        exit(-1);
+    }
 
    // Set all the required options for GLFW
    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -338,9 +303,11 @@ GLFWwindow* glAllInit()
    }
     
     glfwMakeContextCurrent(window);
+    //==============set callback====================//
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
     glfwSetMouseButtonCallback(window, mouse_button_callback);
-    glfwSetCursorPosCallback(window, cursor_position_callback);
+    glfwSetCursorPosCallback(window, mouse_callback);
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
 
    // glad
    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
@@ -350,12 +317,14 @@ GLFWwindow* glAllInit()
 
    // OpenGL initialization stuffs
    glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+    glEnable(GL_DEPTH_TEST);
 
    return(window);
 }
 
-void loadTexture(unsigned int texture, char const *fileName) {
-
+unsigned int loadTexture(char const *fileName) {
+    unsigned int texture;
+    
     // Create texture ids.
     glGenTextures(1, &texture);
 
@@ -385,6 +354,8 @@ void loadTexture(unsigned int texture, char const *fileName) {
     glBindTexture(GL_TEXTURE_2D, texture);
     glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, image);
     glGenerateMipmap(GL_TEXTURE_2D);
+    
+    return texture;
 }
 
 // glfw: whenever the window size changed (by OS or user resize) this callback function executes
