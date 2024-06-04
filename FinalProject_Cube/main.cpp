@@ -39,8 +39,10 @@ GLFWwindow* mainWindow = NULL;
 unsigned int SCR_WIDTH = 1920, SCR_HEIGHT = 1080;
 
 // for texture
-static unsigned int cubeTexture; // Array of texture ids.
-static unsigned int texture2;
+static unsigned int cubeTexture1; // Array of texture ids.
+static unsigned int cubeTexture2;
+static unsigned int cubeTexture3;
+int textureNumber = 1;
 
 int main()
 {
@@ -51,7 +53,9 @@ int main()
    //====data init====//
     
    //====bind texture====//
-    cubeTexture = loadTexture("img_out-1.jpg");
+    cubeTexture1 = loadTexture("img_out-1.jpg");
+    cubeTexture2 = loadTexture("img_out.bmp");
+    cubeTexture3 = loadTexture("img_out-1.jpg");
    //====bind texture====//
     
    //==============bind VAO========================//
@@ -69,7 +73,7 @@ int main()
     
    myShader = new Shader("shader.vs", "shader.fs");
    myShader->use();
-   myShader->setInt("texture1", 0);
+   myShader->setInt("texture1", 0); // default 1
    glBindVertexArray(VAO);
 
    glm::mat4 projection = glm::perspective(glm::radians(45.0f), 1920.0f / 1080.0f, 0.1f, 100.0f);
@@ -143,8 +147,28 @@ int main()
             replay = false;
       }
        
-       glActiveTexture(GL_TEXTURE0);
-       glBindTexture(GL_TEXTURE_2D, cubeTexture);
+       switch (textureNumber) {
+           case 1:
+               glActiveTexture(GL_TEXTURE0);
+              glBindTexture(GL_TEXTURE_2D, cubeTexture1);
+               myShader->setInt("texture1", 0); // 1
+               break;
+           case 2:
+               glActiveTexture(GL_TEXTURE1);
+              glBindTexture(GL_TEXTURE_2D, cubeTexture2);
+               myShader->setInt("texture1", 1); // 2
+               break;
+           case 3:
+               glActiveTexture(GL_TEXTURE2);
+              glBindTexture(GL_TEXTURE_2D, cubeTexture3);
+               myShader->setInt("texture1", 2); // 3
+               break;
+           default:
+               glActiveTexture(GL_TEXTURE0);
+              glBindTexture(GL_TEXTURE_2D, cubeTexture1);
+               myShader->setInt("texture1", 0); // 1
+       }
+       
        glBindVertexArray(VAO);
       glBufferData(GL_ARRAY_BUFFER, sizeof(magicCube.vertices), magicCube.vertices, GL_DYNAMIC_DRAW);
       for (int x = 0; x < 3; x++)
@@ -260,6 +284,18 @@ void processInput(GLFWwindow* window)
       replay = true;
    if (glfwGetKey(window, GLFW_KEY_O) == GLFW_PRESS)
       disturb = true;
+    if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS) {
+        textureNumber = 1;
+        std::cout << "textureNumber: " << textureNumber << std::endl;
+    }
+    if (glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS) {
+        textureNumber = 2;
+        std::cout << "textureNumber: " << textureNumber << std::endl;
+    }
+    if (glfwGetKey(window, GLFW_KEY_3) == GLFW_PRESS) {
+        textureNumber = 3;
+        std::cout << "textureNumber: " << textureNumber << std::endl;
+    }
    if (!mouse_left_down)
    {
       whichx = ((int)lastX - 1561) / 120;
@@ -270,7 +306,7 @@ void processInput(GLFWwindow* window)
       whichx = ((int)actSX - 1561) / 120;
       whichy = 2 - ((int)actSY - 1) / 120;
    }
-   std::cout << my_ins.x << "-" << my_ins.y << std::endl;
+//   std::cout << my_ins.x << "-" << my_ins.y << std::endl;
 }
 
 GLFWwindow* glAllInit()
