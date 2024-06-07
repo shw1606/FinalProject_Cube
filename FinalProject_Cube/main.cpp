@@ -64,6 +64,8 @@ MagicCube magicCube;
 static unsigned int cubeTexture1; // Array of texture ids.
 static unsigned int cubeTexture2;
 static unsigned int cubeTexture3;
+static unsigned int cubeTexture4;
+static unsigned int cubeTexture5;
 int textureNumber = 1;
 
 
@@ -80,8 +82,10 @@ int main()
    //==============set callback====================//
    //====bind texture====//
    cubeTexture1 = loadTexture("img_out-1.jpg");
-   cubeTexture2 = loadTexture("img_out.bmp");
-   cubeTexture3 = loadTexture("img_out-1.jpg");
+   cubeTexture2 = loadTexture("img_out-2.jpg");
+   cubeTexture3 = loadTexture("img_out-3.jpg");
+   cubeTexture4 = loadTexture("img_out-4.jpg");
+   cubeTexture5 = loadTexture("img_out-5.jpg");
 
    //init_texture();
    //unsigned int texture;
@@ -228,6 +232,16 @@ int main()
             glBindTexture(GL_TEXTURE_2D, cubeTexture3);
             myShader->setInt("texture1", 2); // 3
             break;
+         case 4:
+            glActiveTexture(GL_TEXTURE3);
+            glBindTexture(GL_TEXTURE_2D, cubeTexture4);
+            myShader->setInt("texture1", 3); // 4
+            break;
+         case 5:
+             glActiveTexture(GL_TEXTURE4);
+             glBindTexture(GL_TEXTURE_2D, cubeTexture5);
+             myShader->setInt("texture1", 4); // 5
+             break;
          default:
             glActiveTexture(GL_TEXTURE0);
             glBindTexture(GL_TEXTURE_2D, cubeTexture1);
@@ -391,6 +405,14 @@ void processInput(GLFWwindow* window)
       textureNumber = 3;
       std::cout << "textureNumber: " << textureNumber << std::endl;
    }
+    if (glfwGetKey(window, GLFW_KEY_4) == GLFW_PRESS) {
+       textureNumber = 4;
+       std::cout << "textureNumber: " << textureNumber << std::endl;
+    }
+    if (glfwGetKey(window, GLFW_KEY_5) == GLFW_PRESS) {
+       textureNumber = 5;
+       std::cout << "textureNumber: " << textureNumber << std::endl;
+    }
 
    // 현재 D 키 상태를 가져옴
    bool currentDKeyState = glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS;
