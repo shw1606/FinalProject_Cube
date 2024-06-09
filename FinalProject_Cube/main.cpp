@@ -68,6 +68,17 @@ static unsigned int cubeTexture4;
 static unsigned int cubeTexture5;
 int textureNumber = 1;
 
+// for lighting
+glm::vec3 lightSize(0.1f, 0.1f, 0.1f);
+glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
+
+// positions of the point lights
+glm::vec3 pointLightPositions[] = {
+    glm::vec3( -1.5f,  0.2f,  1.0f),
+    glm::vec3( 2.0f, -1.3f, -1.0f)
+};
+
+
 
 int main()
 {
@@ -136,11 +147,37 @@ int main()
    float coe = 1;
 
    myShader->use();
-   myShader->setInt("texture1", 0);
+    myShader->setInt("material.diffuse", 0);
+    myShader->setInt("material.specular", 0);
+    myShader->setFloat("material.shininess", 32);
+    myShader->setVec3("viewPos", glm::vec3(0, 0, 20));
+   
+    // transfer lighting parameters to fragment shader
+    // directional light
+    myShader->setVec3("dirLight.direction", -0.2f, -1.0f, -0.3f);
+    myShader->setVec3("dirLight.ambient", 0.05f, 0.05f, 0.05f);
+    myShader->setVec3("dirLight.diffuse", 0.4f, 0.4f, 0.4f);
+    myShader->setVec3("dirLight.specular", 0.5f, 0.5f, 0.5f);
+    // point light 1
+    myShader->setVec3("pointLights[0].position", pointLightPositions[0]);
+    myShader->setVec3("pointLights[0].ambient", 0.05f, 0.05f, 0.05f);
+    myShader->setVec3("pointLights[0].diffuse", 0.8f, 0.8f, 0.8f);
+    myShader->setVec3("pointLights[0].specular", 1.0f, 1.0f, 1.0f);
+    myShader->setFloat("pointLights[0].constant", 1.0f);
+    myShader->setFloat("pointLights[0].linear", 0.09);
+    myShader->setFloat("pointLights[0].quadratic", 0.032);
+    // point light 2
+    myShader->setVec3("pointLights[1].position", pointLightPositions[1]);
+    myShader->setVec3("pointLights[1].ambient", 0.05f, 0.05f, 0.05f);
+    myShader->setVec3("pointLights[1].diffuse", 0.8f, 0.8f, 0.8f);
+    myShader->setVec3("pointLights[1].specular", 1.0f, 1.0f, 1.0f);
+    myShader->setFloat("pointLights[1].constant", 1.0f);
+    myShader->setFloat("pointLights[1].linear", 0.09);
+    myShader->setFloat("pointLights[1].quadratic", 0.032);
+   
    myShader->setMat4("model", model);
    myShader->setMat4("view", view);
    myShader->setMat4("projection", projection);
-   myShader->setFloat("coe", coe);
 
    // TABLE DRAW
    glm::mat4 tablePos = glm::scale(glm::mat4(1.0f), glm::vec3(0.2f, 0.2f, 0.2f));
@@ -222,32 +259,38 @@ int main()
          case 1:
             glActiveTexture(GL_TEXTURE0);
             glBindTexture(GL_TEXTURE_2D, cubeTexture1);
-            myShader->setInt("texture1", 0); // 1
+              myShader->setInt("material.diffuse", 0);
+              myShader->setInt("material.specular", 0); // 1
             break;
          case 2:
             glActiveTexture(GL_TEXTURE1);
             glBindTexture(GL_TEXTURE_2D, cubeTexture2);
-            myShader->setInt("texture1", 1); // 2
+              myShader->setInt("material.diffuse", 1);
+              myShader->setInt("material.specular", 1); // 2
             break;
          case 3:
             glActiveTexture(GL_TEXTURE2);
             glBindTexture(GL_TEXTURE_2D, cubeTexture3);
-            myShader->setInt("texture1", 2); // 3
+              myShader->setInt("material.diffuse", 2);
+              myShader->setInt("material.specular", 2); // 3
             break;
          case 4:
             glActiveTexture(GL_TEXTURE3);
             glBindTexture(GL_TEXTURE_2D, cubeTexture4);
-            myShader->setInt("texture1", 3); // 4
+              myShader->setInt("material.diffuse", 3);
+              myShader->setInt("material.specular", 3); // 4
             break;
          case 5:
              glActiveTexture(GL_TEXTURE4);
              glBindTexture(GL_TEXTURE_2D, cubeTexture5);
-             myShader->setInt("texture1", 4); // 5
+              myShader->setInt("material.diffuse", 4);
+              myShader->setInt("material.specular", 4); // 5
              break;
          default:
             glActiveTexture(GL_TEXTURE0);
             glBindTexture(GL_TEXTURE_2D, cubeTexture1);
-            myShader->setInt("texture1", 0); // 1
+              myShader->setInt("material.diffuse", 0);
+              myShader->setInt("material.specular", 0); // 1
          }
 
          glBindBuffer(GL_ARRAY_BUFFER, VAO);
