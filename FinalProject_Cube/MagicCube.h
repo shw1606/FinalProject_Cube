@@ -39,11 +39,16 @@ private:
 		{
 			for (int i = 0; i < 36; i++)
 			{
-				glm::vec4 temp(vertice[i * 8], vertice[i * 8 + 1], vertice[i * 8 + 2],1.0f);
+				glm::vec4 temp(vertice[i * 8], vertice[i * 8 + 1], vertice[i * 8 + 2], 1.0f);
+				glm::vec4 normalTemp(vertice[i * 8 + 5], vertice[i * 8 + 6], vertice[i * 8 + 7], 1.0f);
 				temp = trans * temp;
+				normalTemp = trans * normalTemp;
 				vertice[i * 8] = temp.x;
 				vertice[i * 8+1] = temp.y;
 				vertice[i * 8+2] = temp.z;
+				vertice[i * 8+5] = normalTemp.x;
+				vertice[i * 8+6] = normalTemp.y;
+				vertice[i * 8+7] = normalTemp.z;
 			}
 		}
 	};
@@ -128,7 +133,6 @@ public:
 						units[i].x = (int)(round(temp.x)) + 1;
 						units[i].y = (int)(round(temp.y)) + 1;
 						units[i].z = 1 - (int)(round(temp.z));
-						temp = temp * 1.0f;
 					}
 				}
 		}
@@ -144,7 +148,6 @@ public:
 					units[i].x = (int)(round(temp.x)) + 1;
 					units[i].y = (int)(round(temp.y)) + 1;
 					units[i].z = 1 - (int)(round(temp.z));
-					temp = temp * 1.0f;
 				}
 			}
 		}
